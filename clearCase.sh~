@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Tested on bash version 4.4.19 Kubuntu 18.10
+
+
+# Bash script which cleans the directory 
+# Retains only 0, constant and system directories
+
+
+shopt -s extglob  # Turn on the extglob option 
+
+GLOBIGNORE=0:constant:system:*.sh # Ignores these folders,files
+
+echo "Listing files other than 0, constant, system \n"
+
+echo * 
+
+
+echo "Shall I delete all these files ?"
+
+read input 
+
+
+if ["$input" == "y"||"Y"]
+then 
+	echo "Removing Files"
+else 
+	if ["$input" == "n"||"N"]
+	then
+		echo "Not removing files..exiting"
+	fi
+fi
