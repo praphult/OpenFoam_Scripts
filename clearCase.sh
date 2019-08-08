@@ -34,5 +34,12 @@ else
 	fi
 fi
 
+cd constant
+
+rm -r polyMesh
+
+cd ../
+
+
 shopt -u extglob
 

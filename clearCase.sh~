@@ -5,28 +5,41 @@
 
 # Bash script which cleans the directory 
 # Retains only 0, constant and system directories
-
+clear 
 
 shopt -s extglob  # Turn on the extglob option 
 
 GLOBIGNORE=0:constant:system:*.sh # Ignores these folders,files
 
-echo "Listing files other than 0, constant, system \n"
+echo -e  "Listing files other than 0, constant, system \n"
 
 echo * 
 
-
-echo "Shall I delete all these files ?"
+echo -e "\nShall I delete all these files (y/n) ? \n "
 
 read input 
 
 
-if ["$input" == "y"||"Y"]
+if [ "$input" == "y" ] || [ "$input" == "Y" ]
 then 
-	echo "Removing Files"
+	echo -e "\nRemoving Files \n"
+	rm -rf *  
+	echo -e "Deleted Files..Exiting \n"
 else 
-	if ["$input" == "n"||"N"]
-	then
-		echo "Not removing files..exiting"
+	if [ "$input" == "n" ] || [ "$input" == "N" ]
+	then    
+		echo -e "\nNot removing files..Exiting"
+	else
+                echo -e  "\nNot a valid input.. Exiting"
 	fi
 fi
+
+cd constant
+
+rm -r polyMesh
+
+cd ../
+
+
+shopt -u extglob
+
